@@ -14,7 +14,7 @@ const HomePage = (props) => {
         />
         <link rel="icon" href="/travel-icon.png" />
       </Head>
-      <MeetupList meetups={props.meetups} />;
+      <MeetupList meetups={props.meetups} />
     </Fragment>
   );
 };
