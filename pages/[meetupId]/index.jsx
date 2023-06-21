@@ -3,8 +3,6 @@ import { MongoClient, ObjectId } from "mongodb";
 import MeetupDetail from "../../components/meetups/MeetupDetail";
 import Head from "next/head";
 
-const url = process.env.DATABASE_URL;
-
 const MeetupDetails = (props) => {
   return (
     <Fragment>
@@ -28,7 +26,9 @@ const MeetupDetails = (props) => {
 
 // add all of id's in data
 export async function getStaticPaths() {
-  const client = await MongoClient.connect(url);
+  const url = process.env.DATABASE_URL;
+
+  const client = await MongoClient.connect(`mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
 
@@ -46,9 +46,11 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   // fetch data for a single meetup
+  const url = process.env.DATABASE_URL;
+
   const meetupId = context.params.meetupId; // [meetupId]
 
-  const client = await MongoClient.connect(url);
+  const client = await MongoClient.connect(`mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
 

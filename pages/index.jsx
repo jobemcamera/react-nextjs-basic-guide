@@ -25,7 +25,7 @@ export async function getStaticProps() {
   // fetch('/api/meetups'); // we could do this...
   const url = process.env.DATABASE_URL;
 
-  const client = await MongoClient.connect(url);
+  const client = await MongoClient.connect(`mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`);
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
 
