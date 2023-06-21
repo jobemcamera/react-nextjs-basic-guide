@@ -10,10 +10,7 @@ const MeetupDetails = (props) => {
     <Fragment>
       <Head>
         <title>{props.meetupData.title}</title>
-        <meta
-          name="description"
-          content={props.meetupData.description}
-        />
+        <meta name="description" content={props.meetupData.description} />
         <link rel="icon" href="/travel-icon.png" />
       </Head>
       <MeetupDetail
@@ -28,8 +25,9 @@ const MeetupDetails = (props) => {
 
 // add all of id's in data
 export async function getStaticPaths() {
-
-  const client = await MongoClient.connect(`mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`);
+  const client = await MongoClient.connect(
+    `mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`
+  );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
 
@@ -49,7 +47,9 @@ export async function getStaticProps(context) {
   // fetch data for a single meetup
   const meetupId = context.params.meetupId; // [meetupId]
 
-  const client = await MongoClient.connect(`mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`);
+  const client = await MongoClient.connect(
+    `mongodb+srv://jobecamera:${url}@cluster0.hi4yca3.mongodb.net/meetups?retryWrites=true&w=majority`
+  );
   const db = client.db();
   const meetupsCollection = db.collection("meetups");
 
@@ -69,6 +69,7 @@ export async function getStaticProps(context) {
         description: selectedMeetup.description,
       },
     },
+    revalidate: 1,
   };
 }
 
