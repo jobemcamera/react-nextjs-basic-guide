@@ -31,6 +31,7 @@ const NewMeetupPage = () => {
           name="description"
           content="Add your own meetups and create amazing networking opportunities"
         />
+        <link rel="icon" href="/travel-icon.png" />
       </Head>
       <NewMeetupForm onAddMeetup={addMeetUpHandler} />
     </Fragment>

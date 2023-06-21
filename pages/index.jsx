@@ -12,6 +12,7 @@ const HomePage = (props) => {
           name="description"
           content="Browse a huge list of highly active React meetups"
         />
+        <link rel="icon" href="/travel-icon.png" />
       </Head>
       <MeetupList meetups={props.meetups} />;
     </Fragment>

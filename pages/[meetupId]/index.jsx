@@ -14,6 +14,7 @@ const MeetupDetails = (props) => {
           name="description"
           content={props.meetupData.description}
         />
+        <link rel="icon" href="/travel-icon.png" />
       </Head>
       <MeetupDetail
         image={props.meetupData.image}
